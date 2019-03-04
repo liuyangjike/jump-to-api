@@ -10,7 +10,8 @@ function provideDefinition(document, position, token) {
   // const line = document.lineAt(position)
   const projectPath = util.getProjectPath(document)
   if (/\.vue$/.test(fileName)) {
-    var fileList = util.getAllFiles(`${projectPath}/api`)
+    // var fileList = util.getAllFiles(`${projectPath}/api`)
+    var fileList = projectPath.includes('/')? util.getAllFiles(`${projectPath}/api`): util.getAllFiles(`${projectPath}\\src\\api`)
     var destPath = null
     var pos = null
     fileList.forEach(filename => {

@@ -34,6 +34,10 @@ const util = {
             // return vscode.workspace.rootPath + '/' + this._getProjectName(vscode, document);
         }
         workspaceFolders.forEach(folder => {
+            if (folder.includes('/') && currentFile.includes('\\')) {
+                folder = folder.split('/').slice(1)
+                folder = folder.join("\\")
+            }
             if (currentFile.indexOf(folder) === 0) {
                 projectPath = folder;
             }
